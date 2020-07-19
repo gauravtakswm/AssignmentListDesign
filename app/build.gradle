@@ -11,7 +11,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.gauravtak.assignment_list_design"
-        minSdkVersion 18
+        minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"

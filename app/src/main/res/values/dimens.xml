@@ -5,10 +5,11 @@
     <dimen name="textSizeListItemTitle">14sp</dimen>
     <dimen name="marginListItemStart">16dp</dimen>
     <dimen name="marginListItemEnd">16dp</dimen>
-    <dimen name="widthListItemImageView">65dp</dimen>
-    <dimen name="heightListItemImageView">65dp</dimen>
+    <dimen name="widthListItemImageView">50dp</dimen>
+    <dimen name="heightListItemImageView">50dp</dimen>
     <dimen name="marginListItemTop">5dp</dimen>
     <dimen name="textSizeNoData">16sp</dimen>
+    <dimen name="heightDividerLine">1dp</dimen>
 
 
 </resources>

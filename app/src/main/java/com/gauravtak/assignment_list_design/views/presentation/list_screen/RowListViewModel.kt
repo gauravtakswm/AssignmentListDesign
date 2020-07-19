@@ -19,12 +19,13 @@ import com.gauravtak.assignment_list_design.utils_classes.UtilHelper
     // this title represents the title value of item
      val title: ObservableField<String> by lazy{ ObservableField<String>() }
     // this Description represents the description value of item
-    val description: ObservableField<Spanned> by lazy { ObservableField<Spanned>()}
+    val description: ObservableField<String> by lazy { ObservableField<String>()}
     /*this pic represents the image url value of item( the url image into loaded
      into imageview using glide library inside the ImageSetter class)*/
     val picUrl: ObservableField<String> by lazy { ObservableField<String>() }
     //this boolean is used to set visibility of list item
      val isVisible:ObservableBoolean by lazy { ObservableBoolean() }
+    // as per the need visibility and size of views will be handled according to the need
     init {
 
         if((rowsBean.title==null || rowsBean.title?.isEmpty()!!) && (rowsBean.description==null || rowsBean.description?.isEmpty()!!) && (rowsBean.imageHref==null || rowsBean.imageHref?.isEmpty()!!)) {
@@ -32,24 +33,9 @@ import com.gauravtak.assignment_list_design.utils_classes.UtilHelper
         }else {
             isVisible.set(true)
                  title.set(rowsBean.title)
-                 if((rowsBean.description==null || rowsBean.description?.isEmpty()!!))
-                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                         description.set(Html.fromHtml("<b>Description</b> : NA", FROM_HTML_MODE_LEGACY))
-                     }else
-                     {
-                         description.set(Html.fromHtml("<b>Description</b> : NA"))
+            description.set(rowsBean.description)
 
-                     }
-                 else
-                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                         description.set(Html.fromHtml("<b>Description</b> : "+rowsBean.description, FROM_HTML_MODE_LEGACY))
-                     }else
-                     {
-                         description.set(Html.fromHtml("<b>Description</b> : "+rowsBean.description))
-
-                     }
-
-            picUrl.set(rowsBean.imageHref)
+                picUrl.set(rowsBean.imageHref)
         }
 
 
