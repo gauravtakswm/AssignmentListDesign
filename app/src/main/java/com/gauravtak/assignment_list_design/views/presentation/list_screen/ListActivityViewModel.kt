@@ -9,14 +9,18 @@ import androidx.lifecycle.ViewModel
 import com.assignment.listdesign.di.module.ApiInterface
 import com.gauravtak.assignment_list_design.AssignmentListDesignApp
 import com.gauravtak.assignment_list_design.R
+import com.gauravtak.assignment_list_design.db_storage.DatabaseHandler
 import com.gauravtak.assignment_list_design.model_classes.ListDataResponse
+import com.gauravtak.assignment_list_design.utils_classes.AppConstants
 import com.gauravtak.assignment_list_design.utils_classes.LiveDataEvent
 import com.gauravtak.assignment_list_design.utils_classes.UtilHelper
 import com.gauravtak.assignment_list_design.views.custom_views.CustomProgressDialog
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
+import java.lang.Exception
 import javax.inject.Inject
 
 //the ListActivityViewModel is associated with ListActivity to perform api call and other logical operations
@@ -30,18 +34,19 @@ import javax.inject.Inject
     lateinit var application: Application
 
     private lateinit var listActivity:ListActivity
+    private lateinit var listDataResponse: ListDataResponse
 
-    val listResponseDataEvent:LiveDataEvent<List<ListDataResponse.RowsBean?>> =  LiveDataEvent()
+    val listResponseDataEvent:LiveDataEvent<ListDataResponse> =  LiveDataEvent()
     val toolbarTitle: ObservableField<String> by lazy{ ObservableField<String>() }
     val isLoading: ObservableBoolean by lazy { ObservableBoolean() }
     val isNoDataVisible: ObservableBoolean by lazy { ObservableBoolean()}
-
+    private  var isValueFromDb:Boolean = false
 
     fun init(listActivity: ListActivity) {
         this.listActivity = listActivity;
         //initialized the dagger2 injection for getting application and retrofit objects
         (listActivity.getApplication() as AssignmentListDesignApp).component.inject(this)
-
+        getDataFromStorage()
     }
     fun onRefresh()
     {
@@ -52,6 +57,24 @@ import javax.inject.Inject
           getListDataApiCall()
         }, 500L)
 
+
+    }
+    //get the data from internal sqlite storage
+    private fun getDataFromStorage() {
+        val dataValue = DatabaseHandler(AssignmentListDesignApp.mContext).getScreenData(AppConstants.SCREEN_KEY_LIST_DATA);
+        if(dataValue!=null) {
+            isValueFromDb = true; // is data available
+            listDataResponse = Gson().fromJson(dataValue,ListDataResponse::class.java)
+
+            try {
+                toolbarTitle.set(listDataResponse.getTitle())
+                listResponseDataEvent.value = listDataResponse // updating the data of recycler View based on api response
+            }catch (e: Exception){}
+        }else
+        {
+            isValueFromDb = false; // is data not available
+
+        }
 
     }
      fun getListDataApiCall()
@@ -69,7 +92,8 @@ import javax.inject.Inject
                     toolbarTitle.set(listDataResponse?.getTitle()) //Updating the title of toolbar based on api response
                     if(listDataResponse?.getRows()!=null && listDataResponse.getRows()!!.size>0) {
                         isNoDataVisible.set(false);// no data is hidden because recycler view data is received as api response
-                        listResponseDataEvent.value = listDataResponse.getRows() // updating the data of recycler View based on api response
+                        listResponseDataEvent.value = listDataResponse // updating the data of recycler View based on api response
+                    saveDataIntoStorage() // add the data or update the data if existing
                     }else {
                         isNoDataVisible.set(true) //no data text is shown if recycler view data is not received in api response
                     }
@@ -87,6 +111,15 @@ import javax.inject.Inject
 
             }
         })
+
+    }
+    fun saveDataIntoStorage()
+    {
+        val stringValue = Gson().toJson(listDataResponse)
+        if(!isValueFromDb)
+            DatabaseHandler(AssignmentListDesignApp.mContext).addScreenData(stringValue, AppConstants.SCREEN_KEY_LIST_DATA);
+        else
+            DatabaseHandler(AssignmentListDesignApp.mContext).updateScreenData(stringValue, AppConstants.SCREEN_KEY_LIST_DATA);
 
     }
 }
