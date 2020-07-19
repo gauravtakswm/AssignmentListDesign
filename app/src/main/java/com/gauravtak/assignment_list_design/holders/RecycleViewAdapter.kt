@@ -12,9 +12,9 @@ import com.gauravtak.assignment_list_design.model_classes.ListDataResponse
 import com.gauravtak.assignment_list_design.views.presentation.list_screen.RowListViewModel
 
 
-/*class MeetingsAdapter {
-}*/
 
+/* this Adapter class is designed to hold the all the item of recycler view and data-values has been binding on screen
+ using RowListViewModel and list_item.xml file*/
 class RecycleViewAdapter(private val activity: Activity, private var rowsBeanList: ArrayList<ListDataResponse.RowsBean?>)
     : RecyclerView.Adapter<RecycleViewAdapter.MeetingViewHolder>() {
 

@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-
+//this is used to provide the retrofit api client module to call apis
 @Module
 class ApiClientModule(val BASE_URL: String) {
     @get:Singleton
@@ -25,7 +25,8 @@ class ApiClientModule(val BASE_URL: String) {
                 .addInterceptor(httpLoggingInterceptor)
                 .build()
     }
-
+// this http logging interceptor is added to see the logs over the api calls based on request and response,
+// for production or release this log or interceptor can be removed
     val httpLoggingInterceptor: HttpLoggingInterceptor
         get() {
             val httpLoggingInterceptor = HttpLoggingInterceptor()

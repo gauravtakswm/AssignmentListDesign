@@ -10,7 +10,8 @@ import com.assignment.listdesign.di.module.DaggerApiComponent
 import com.gauravtak.assignment_list_design.utils_classes.AppConstants
 
 
-public class AssignmentListDesignApp: MultiDexApplication(){
+//this represents the application class file of android app
+ class AssignmentListDesignApp: MultiDexApplication(){
     lateinit var component: ApiComponent
 
     override fun onCreate() {

@@ -1,5 +1,6 @@
 package com.gauravtak.assignment_list_design.model_classes
 
+//this class is used to received the data from api as per the required json format
  class ListDataResponse {
     private var title: String? = null
     private var rows: List<RowsBean?>? = null
