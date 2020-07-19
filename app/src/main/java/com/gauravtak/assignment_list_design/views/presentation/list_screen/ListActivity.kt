@@ -39,7 +39,8 @@ class ListActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         setUpRecyclerView()
         initViewModel()
-        Handler().postDelayed(Runnable { listActivityViewModel.getListDataApiCall()  },5000)
+        listActivityViewModel.getListDataApiCall()
+
     }
 
 

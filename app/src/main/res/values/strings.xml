@@ -19,7 +19,7 @@
     <string name="please_select_correct_start_end_time">Please select correct start and end time</string>
     <string name="please_enter_description">Please enter description</string>
 
-    <string name="error_in_api_response">Error in response</string>
+    <string name="error_in_api_response">No response received,please check your internet connection.</string>
     <string name="no_response_received">No response received.</string>
     <string name="refresh">Refresh</string>
     <string name="no_data_found">No Data Found</string>

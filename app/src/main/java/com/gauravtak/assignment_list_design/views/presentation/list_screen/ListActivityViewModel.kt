@@ -80,20 +80,22 @@ import javax.inject.Inject
      fun getListDataApiCall()
     {
         //showing custom dialog for api progress
-        CustomProgressDialog.showProgress(listActivity)
+        if(!isValueFromDb)//this progress dialog will be shown when no data is present into internal storage
+            CustomProgressDialog.showProgress(listActivity) //first time show the progress dialog of api
         val apiService: ApiInterface = retrofit.create(ApiInterface::class.java)
 
         val call = apiService.listData
         call!!.enqueue(object : Callback<ListDataResponse?> {
             override fun onResponse(call: Call<ListDataResponse?>, response: Response<ListDataResponse?>) {
-              CustomProgressDialog.hideprogressbar()
+                if(!isValueFromDb)
+                CustomProgressDialog.hideprogressbar() // hide the progress dialog
                 if(response.body()!=null) {
                         val listDataResponse = response.body()
                     toolbarTitle.set(listDataResponse?.getTitle()) //Updating the title of toolbar based on api response
                     if(listDataResponse?.getRows()!=null && listDataResponse.getRows()!!.size>0) {
                         isNoDataVisible.set(false);// no data is hidden because recycler view data is received as api response
                         listResponseDataEvent.value = listDataResponse // updating the data of recycler View based on api response
-                    saveDataIntoStorage() // add the data or update the data if existing
+                    saveDataIntoStorage(listDataResponse) // add the data or update the data if existing
                     }else {
                         isNoDataVisible.set(true) //no data text is shown if recycler view data is not received in api response
                     }
@@ -105,15 +107,16 @@ import javax.inject.Inject
             }
 
             override fun onFailure(call: Call<ListDataResponse?>, t: Throwable) {
-                CustomProgressDialog.hideprogressbar()
-                isNoDataVisible.set(true) //no data text is shown if recycler view data is not received in api response
+                if(!isValueFromDb)
+                    CustomProgressDialog.hideprogressbar() // hide the progress dialog   isNoDataVisible.set(true) //no data text is shown if recycler view data is not received in api response
                 UtilHelper.showSnackBar(listActivity,listActivity.getString(R.string.error_in_api_response))
 
             }
         })
 
     }
-    fun saveDataIntoStorage()
+    //saving new api data into sqlite storage as per the need
+    fun saveDataIntoStorage(listDataResponse: ListDataResponse)
     {
         val stringValue = Gson().toJson(listDataResponse)
         if(!isValueFromDb)
