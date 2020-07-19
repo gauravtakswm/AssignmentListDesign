@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textSizeListItemSubTitle">10sp</dimen>
+    <dimen name="textSizeListItemTitle">12sp</dimen>
+    <dimen name="marginListItemStart">16dp</dimen>
+    <dimen name="marginListItemEnd">16dp</dimen>
+    <dimen name="widthListItemImageView">40dp</dimen>
+    <dimen name="heightListItemImageView">40dp</dimen>
+    <dimen name="marginListItemTop">5dp</dimen>
+    <dimen name="textSizeNoData">14sp</dimen>
+</resources>

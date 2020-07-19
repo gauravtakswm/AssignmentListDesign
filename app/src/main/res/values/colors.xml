@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#16a085</color>
+    <color name="colorPrimaryDark">	#000</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="textColorToolbar">#ffffff</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorDividerLineDark">#99000000</color>
+    <color name="colorGrey">#74777f</color>
+
+    <color name="colorSubTitleGrey">@color/colorGrey</color>
+    <color name="colorDividerLineLight">@color/colorGreyLight</color>
+    <color name="colorTextBlack">@color/colorBlack</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorGreyLight">#90919292</color>
+
+</resources>
