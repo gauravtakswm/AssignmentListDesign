@@ -4,8 +4,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 android {
 
-    dataBinding {
-        enabled = true
+    buildFeatures{
+        dataBinding = true
     }
 
     compileSdkVersion 28

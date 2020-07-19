@@ -14,6 +14,7 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.gauravtak.assignment_list_design.R;
 
+//this class file is used to provide image binding support with layout file using glide library
 public class ImageSetter {
 
     @BindingAdapter("bind:imageUrl")
