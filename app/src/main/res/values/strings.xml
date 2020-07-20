@@ -1,26 +1,9 @@
 <resources>
     <string name="app_name">AssignmentListDesign</string>
 
-    <string name="label_prev">Prev</string>
-    <string name="label_next">Next</string>
-    <string name="schedule_company_meeting">Schedule Company Meeting</string>
-    <string name="submit">Submit</string>
-    <string name="back">Back</string>
-    <string name="schedule_a_meeting">Schedule a meeting</string>
-    <string name="meeting_date">Meeting Date</string>
-    <string name="description">Description</string>
-    <string name="end_time">End Time</string>
-    <string name="start_time">Start Time</string>
-    <string name="please_select_meeting_date">Please select Meeting Date</string>
-    <string name="please_select_meeting_start_time">Please select meeting start time</string>
-    <string name="please_select_meeting_end_time">Please select meeting end time</string>
-    <string name="slot_not_available">Slot not available</string>
-    <string name="slot_available">Slot available</string>
-    <string name="please_select_correct_start_end_time">Please select correct start and end time</string>
-    <string name="please_enter_description">Please enter description</string>
-
-    <string name="error_in_api_response">No response received,please check your internet connection.</string>
+    <string name="error_in_api_response">No response received, please check your internet connection.</string>
     <string name="no_response_received">No response received.</string>
     <string name="refresh">Refresh</string>
     <string name="no_data_found">No Data Found</string>
+    <string name="please_check_your_internet_connection">Please check your internet connection</string>
 </resources>

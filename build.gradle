@@ -26,3 +26,9 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+ext {
+    coreVersion = "1.3.0-beta02"
+    extJUnitVersion = "1.1.2-beta02"
+    runnerVersion = "1.3.0-beta02"
+     espressoVersion = "3.3.0-beta02"
+}

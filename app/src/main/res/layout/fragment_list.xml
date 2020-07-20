@@ -7,43 +7,32 @@
         <import type="android.view.View"/>
         <variable
             name="listViewModel"
-            type="com.gauravtak.assignment_list_design.views.presentation.list_screen.ListActivityViewModel" />
+            type="com.gauravtak.assignment_list_design.views.presentation.list_screen.fragments.ListFragmentViewModel" />
 
     </data>
     <RelativeLayout
-         android:layout_width="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
 
         android:orientation="vertical"
         >
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:title="@null"
-            app:title="@{listViewModel.toolbarTitle}"
 
-            app:titleTextColor="@color/colorWhite"
-            android:layout_width="match_parent"
-            android:background="@color/colorPrimary"
-            android:layout_height="?attr/actionBarSize"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            />
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-          android:layout_below="@+id/toolbar"
             android:id="@+id/swipe_refresh_layout"
             app:refreshing="@{listViewModel.isLoading}"
             app:onRefreshListener="@{()->listViewModel.onRefresh()}"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:visibility="@{listViewModel.isNoDataVisible?View.GONE:View.VISIBLE}"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
-            bind:listitem="@layout/list_item"
-            />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:visibility="@{listViewModel.isNoDataVisible?View.GONE:View.VISIBLE}"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                bind:listitem="@layout/list_item"
+                />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
         <androidx.appcompat.widget.AppCompatTextView
