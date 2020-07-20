@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
                    listFragment = ListFragment.newInstance()
                }
                 fragmentTransaction.replace(R.id.fragment_container,listFragment!!).commit();
+                //fragments can be added to backStack using addToBackStack as per the need of flow.
             }
         }
     }
