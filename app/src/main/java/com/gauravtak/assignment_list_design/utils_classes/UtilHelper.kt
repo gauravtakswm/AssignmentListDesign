@@ -10,9 +10,11 @@ import com.google.android.material.snackbar.Snackbar
 
 object UtilHelper {
      fun showSnackBar(mActivity: AppCompatActivity, message: String) {
-        Snackbar.make(mActivity.findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show()
+         if(mActivity!=null)
+             Snackbar.make(mActivity.findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show()
     }
     fun showSnackBar(mActivity: FragmentActivity, message: String) {
+        if(mActivity!=null)
         Snackbar.make(mActivity.findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show()
     }
      fun showToast(message: String) {

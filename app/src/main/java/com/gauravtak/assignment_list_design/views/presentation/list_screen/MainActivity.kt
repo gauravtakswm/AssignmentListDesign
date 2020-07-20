@@ -11,7 +11,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 //the Activity represents the activity screen which is showing list item which are populated into recycler View
 //Activity name can be given based on the purpose or screen use
 class MainActivity : AppCompatActivity() {
-    private val mActivity: AppCompatActivity by lazy {this}
     private val fragmentTransaction:FragmentTransaction by lazy{supportFragmentManager.beginTransaction()}
      var  listFragment: ListFragment?=null
     override fun onCreate(savedInstanceState: Bundle?) {

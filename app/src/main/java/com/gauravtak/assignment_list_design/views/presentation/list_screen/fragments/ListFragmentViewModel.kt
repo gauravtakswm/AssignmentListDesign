@@ -22,7 +22,7 @@ import retrofit2.Retrofit
 import java.lang.Exception
 import javax.inject.Inject
 
-//the ListActivityViewModel is associated with ListActivity to perform api call and other logical operations
+//the ListActivityViewModel is associated with ListFragment to perform api call and other logical operations
  class ListFragmentViewModel :ViewModel()
 {
 
@@ -52,7 +52,11 @@ import javax.inject.Inject
         isLoading.set(true)
         android.os.Handler().postDelayed({
             isLoading.set(false)
-          getListDataApiCall()
+            if(activity!=null && UtilHelper.isConnectToInternet(activity!!))
+            getListDataApiCall()
+            else if(activity!=null)
+            UtilHelper.showSnackBar(activity!!,activity.getString(R.string.please_check_your_internet_connection))
+
         }, 500L)
 
 
