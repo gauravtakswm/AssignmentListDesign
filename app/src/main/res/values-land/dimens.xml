@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="textSizeListItemSubTitle">10sp</dimen>
-    <dimen name="textSizeListItemTitle">12sp</dimen>
-    <dimen name="marginListItemStart">16dp</dimen>
-    <dimen name="marginListItemEnd">16dp</dimen>
-    <dimen name="widthListItemImageView">40dp</dimen>
-    <dimen name="heightListItemImageView">40dp</dimen>
-    <dimen name="marginListItemTop">3dp</dimen>
-    <dimen name="textSizeNoData">14sp</dimen>
+    <dimen name="textSizeListItemSubTitle">12sp</dimen>
+    <dimen name="textSizeListItemTitle">14sp</dimen>
+    <dimen name="marginListItemStart">8dp</dimen>
+    <dimen name="marginListItemEnd">8dp</dimen>
+    <dimen name="paddingStart">16dp</dimen>
+    <dimen name="paddingEnd">16dp</dimen>
+    <dimen name="paddingTop">5dp</dimen>
+    <dimen name="paddingBottom">5dp</dimen>
+    <dimen name="widthListItemImageView">50dp</dimen>
+    <dimen name="heightListItemImageView">50dp</dimen>
+    <dimen name="marginListItemTop">5dp</dimen>
+
+    <dimen name="textSizeNoData">16sp</dimen>
     <dimen name="heightDividerLine">1dp</dimen>
+
 </resources>
