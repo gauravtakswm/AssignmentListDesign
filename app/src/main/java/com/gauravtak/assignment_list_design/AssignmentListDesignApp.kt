@@ -12,13 +12,13 @@ import com.gauravtak.assignment_list_design.utils_classes.AppConstants
 
 //this represents the application class file of android app
  class AssignmentListDesignApp: MultiDexApplication(){
-    lateinit var component: ApiComponent
+
 
     override fun onCreate() {
         super.onCreate()
         mContext = this
         MultiDex.install(this)
-        initDaggerComponent();
+        initDaggerComponent()
     }
 
     private fun initDaggerComponent() {
@@ -31,6 +31,6 @@ import com.gauravtak.assignment_list_design.utils_classes.AppConstants
 
     companion object{
         lateinit var mContext: Context
-
+        lateinit var component: ApiComponent
     }
 }

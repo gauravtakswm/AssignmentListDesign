@@ -1,49 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
-    <data>
-        <import type="android.view.View"/>
-        <variable
-            name="listViewModel"
-            type="com.gauravtak.assignment_list_design.views.presentation.list_screen.fragments.ListFragmentViewModel" />
-
-    </data>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
 
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_refresh_layout"
-            app:refreshing="@{listViewModel.isLoading}"
-            app:onRefreshListener="@{()->listViewModel.onRefresh()}"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:visibility="@{listViewModel.isNoDataVisible?View.GONE:View.VISIBLE}"
-                android:layout_height="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:orientation="vertical"
-                bind:listitem="@layout/list_item"
-                />
-
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:visibility="@{listViewModel.isNoDataVisible?View.VISIBLE:View.GONE}"
-
-            android:textColor="@color/colorTextBlack"
-            android:textSize="@dimen/textSizeNoData"
             android:text="@string/no_data_found"
-            />
+
+            android:textColor="@color/colorBlackText"
+            android:textSize="@dimen/textSizeNoData"
+            android:visibility="@{listViewModel.isNoDataVisible?View.VISIBLE:View.GONE}" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:onRefreshListener="@{()->listViewModel.onRefresh()}"
+            app:refreshing="@{listViewModel.isLoading}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="@{listViewModel.isNoDataVisible?View.GONE:View.VISIBLE}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                bind:listitem="@layout/list_item" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </RelativeLayout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="listViewModel"
+            type="com.gauravtak.assignment_list_design.views.presentation.list_screen.fragments.ListFragmentViewModel" />
+
+    </data>
 </layout>

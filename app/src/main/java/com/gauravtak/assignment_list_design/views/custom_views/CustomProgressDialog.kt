@@ -9,10 +9,10 @@ import com.gauravtak.assignment_list_design.R
 
 object CustomProgressDialog {
     private  var dialog: Dialog? = null
-    fun showProgress(mcontext: Context?) {
+    fun showProgress(mContext: Context) {
         try {
             if (dialog == null) {
-                dialog = Dialog(mcontext)
+                dialog = Dialog(mContext)
                 dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
                 dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 dialog?.setCanceledOnTouchOutside(false)
@@ -24,7 +24,7 @@ object CustomProgressDialog {
         }
     }
 
-    fun hideprogressbar() {
+    fun hideProgress() {
         if (dialog?.isShowing!!) {
             dialog?.dismiss()
             dialog = null

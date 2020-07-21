@@ -13,7 +13,7 @@ class RecyclerViewMatcher(private val recyclerViewId: Int) {
         return atPositionOnView(position, -1)
     }
 
-    fun atPositionOnView(position: Int, targetViewId: Int): Matcher<View> {
+    private fun atPositionOnView(position: Int, targetViewId: Int): Matcher<View> {
         return object : TypeSafeMatcher<View>() {
             var resources: Resources? = null
             var childView: View? = null
@@ -24,7 +24,7 @@ class RecyclerViewMatcher(private val recyclerViewId: Int) {
                         resources!!.getResourceName(recyclerViewId)
                     } catch (var4: NotFoundException) {
                         String.format("%s (resource name not found)",
-                                *arrayOf<Any>(Integer.valueOf(recyclerViewId)))
+                                arrayOf<Any>(Integer.valueOf(recyclerViewId)))
                     }
                 }
                 description.appendText("with id: $idDescription")

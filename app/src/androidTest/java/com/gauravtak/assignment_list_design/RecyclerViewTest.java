@@ -63,7 +63,7 @@ public class RecyclerViewTest {
 
         }
 
-    public static ViewAction waitFor(final long millis) {
+    public ViewAction waitFor(final long millis) {
         return new ViewAction() {
             @Override
             public Matcher<View> getConstraints() {

@@ -3,15 +3,14 @@
     <color name="colorPrimary">#16a085</color>
     <color name="colorPrimaryDark">	#000</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="textColorToolbar">#ffffff</color>
     <color name="colorWhite">#ffffff</color>
-    <color name="colorDividerLineDark">#99000000</color>
-    <color name="colorGrey">#74777f</color>
-
-    <color name="colorSubTitleGrey">@color/colorGrey</color>
-    <color name="colorDividerLineLight">@color/colorGreyLight</color>
-    <color name="colorTextBlack">@color/colorBlack</color>
     <color name="colorBlack">#000000</color>
-    <color name="colorGreyLight">#90919292</color>
+    <color name="textColorToolbar">@color/colorWhite</color>
+    <color name="colorGrey">#74777f</color>
+    <color name="colorGreyLight">#33b1b1b1</color>
+
+    <color name="colorBlackSubTitle">@color/colorBlack</color>
+    <color name="colorBlueTitle">#4863A0</color>
+    <color name="colorBlackText">@color/colorBlack</color>
 
 </resources>

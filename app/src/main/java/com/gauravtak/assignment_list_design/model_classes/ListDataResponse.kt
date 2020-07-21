@@ -11,16 +11,8 @@ import java.io.Serializable
         return title
     }
 
-    fun setTitle(title: String?) {
-        this.title = title
-    }
-
-    fun getRows(): ArrayList<RowsBean?>? {
+   fun getRows(): ArrayList<RowsBean?>? {
         return rows
-    }
-
-    fun setRows(rows: ArrayList<RowsBean?>?) {
-        this.rows = rows
     }
 
     class RowsBean :Serializable{

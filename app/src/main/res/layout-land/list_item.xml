@@ -2,70 +2,74 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bind="http://schemas.android.com/tools">
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_list_item"
+        android:onClick="@{(v)->rowListViewModel.performClick()}"
+        android:paddingStart="@dimen/paddingStart"
+        android:paddingLeft="@dimen/paddingStart"
+        android:paddingTop="@dimen/paddingTop"
+        android:paddingEnd="@dimen/paddingEnd"
+        android:paddingRight="@dimen/paddingEnd"
+        android:paddingBottom="@dimen/paddingBottom"
+        android:visibility="@{rowListViewModel.isVisible?View.VISIBLE:View.GONE}"
+
+        >
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/widthListItemImageView"
+            android:layout_height="@dimen/heightListItemImageView"
+            android:layout_below="@+id/tvTitle"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/marginListItemEnd"
+            android:layout_marginLeft="@dimen/marginListItemEnd"
+            android:layout_marginEnd="@dimen/marginListItemEnd"
+            android:layout_marginRight="@dimen/marginListItemEnd"
+            android:layout_toStartOf="@+id/imageViewArrow"
+            android:layout_toLeftOf="@+id/imageViewArrow"
+            android:scaleType="centerCrop"
+            android:visibility="@{rowListViewModel.isVisible?View.VISIBLE:View.GONE}"
+            bind:imageUrl="@{rowListViewModel.picUrl}" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_right_arrow"
+            android:visibility="@{rowListViewModel.isVisible?View.VISIBLE:View.GONE}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDescription"
+            style="@style/TextViewListSubTitle"
+            android:layout_below="@+id/tvTitle"
+            android:layout_toStartOf="@+id/imageView"
+            android:layout_toLeftOf="@+id/imageView"
+            android:text="@{rowListViewModel.description}"
+            android:visibility="@{rowListViewModel.isVisible?View.VISIBLE:View.GONE}" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            style="@style/TextViewListTitle"
+            android:text="@{rowListViewModel.title}"
+            android:visibility="@{rowListViewModel.isVisible?View.VISIBLE:View.GONE}" />
+    </RelativeLayout>
+
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="rowListViewModel"
             type="com.gauravtak.assignment_list_design.views.presentation.list_screen.RowListViewModel" />
     </data>
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_marginTop="@dimen/marginListItemTop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="@{(v)->rowListViewModel.performClick(v)}"
-        android:layout_marginStart="@dimen/marginListItemStart"
-        android:layout_marginLeft="@dimen/marginListItemStart"
-        android:layout_marginRight="@dimen/marginListItemEnd"
-        android:layout_marginEnd="@dimen/marginListItemEnd"
-        >
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageView"
-            android:layout_alignTop="@+id/linear_layout"
-            android:layout_width="@dimen/widthListItemImageView"
-            android:layout_marginRight="@dimen/marginListItemEnd"
-            android:layout_marginEnd="@dimen/marginListItemEnd"
-            android:visibility="@{rowListViewModel.isVisible?View.VISIBLE:View.GONE}"
-            android:scaleType="centerCrop"
-            android:layout_gravity="center_vertical|center_horizontal"
-            bind:imageUrl="@{rowListViewModel.picUrl}"
-            android:layout_height="@dimen/heightListItemImageView"/>
-        <LinearLayout
-            android:layout_toEndOf="@+id/imageView"
-            android:layout_toRightOf="@+id/imageView"
-            android:visibility="@{rowListViewModel.isVisible?View.VISIBLE:View.GONE}"
-            android:id="@+id/linear_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvTitle"
-                android:text="@{rowListViewModel.title}"
-                android:textColor="@color/colorTextBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/textSizeListItemTitle"
-
-                />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/textSizeListItemSubTitle"
-                android:text="@{rowListViewModel.description}"
-                android:textColor="@color/colorSubTitleGrey"
-                />
-            <View
-                android:visibility="visible"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/heightDividerLine"
-                android:layout_marginTop="@dimen/marginListItemTop"
-                android:background="@color/colorDividerLineLight" />
-        </LinearLayout>
-    </RelativeLayout>
 </layout>
 
 
